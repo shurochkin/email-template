@@ -1,0 +1,78 @@
+- var logolink = 'http://auth.as'
+- var base = 'http://auth.dev.csod.ru/email-template'
+- var appstore = 'http://appstore.apple.com'
+- var googleplay = 'http://play.google.com'
+- var qrlink = 'https://auth.as/api/qr?hash=beefdead'
+- var mailto = 'support@auth.as'
+
+doctype html
+html
+  head
+    link(rel="stylesheet", href="css/style.css")
+    meta(charset="utf8")
+  body
+    .email-container
+
+      .email-header
+        .email-wrapper
+          a.email-logo(href="#{logolink}")
+            img(src="#{base}/img/email-rcntec-logo.png")
+      .email-details
+        .email-wrapper
+          .email-from
+            b От: 
+            |AUTH.AS
+          .email-subject
+            b Тема: 
+            |Регистрация на AUTH.AS
+          hr.email-hr
+
+      .email-body
+        .email-wrapper
+          h3 Здравствуйте!
+          p Мы рады что вы решили воспользоваться нашим сервисом двухфакторной аутентификации!
+
+          p Следуйте простым шагам, и настройка приложения не займет у вас более нескольких минут: Скачайте и установите приложение на ваше мобильное устройство:  
+
+      .email-apps-links
+        .email-wrapper
+          .email-app
+            .email-app-item
+              a(href="#{appstore}")
+                img(src="#{base}/img/appstore.png")
+            .email-app-item
+              a(href="#{googleplay}")
+                img(src="#{base}/img/google-play.png")
+        
+      .email-body
+        .email-wrapper
+          p 
+            | Перейдите по ссылке или скопируйте эту строку в поле адреса вашего браузера: 
+            a(href="#{qrlink}") #{qrlink}
+            | (если вы открыли письмо на мобильном устройстве, просто кликните по ссылке).
+
+
+      .email-instr
+        .email-wrapper
+          - var instr = ['Нажмите на кнопку настроить', 'Нажмите на значок фотоаппарата в правом верхнем углу', 'Наведите камеру вашего телефона на QR код и нажмите кнопку завершения', 'Ваше приложение готово к работе!']
+          .email-inst-list
+            each item, idx in instr
+              - var num = idx+1
+              .email-instr-item
+                .email-instr-item-header
+                  .num= num
+                  .text= item
+                .email-instr-item-body
+                  case num
+                    when 3
+                      - var ext = 'jpg'
+                    default
+                      - var ext = 'png'
+                  img(src="#{base}/img/step#{num}.#{ext}")
+
+
+      .email-body
+        .email-wrapper
+          p 
+            |Если у Вас остались вопросы или возникли проблемы - не стесняйтесь, пишите нам или звоните:
+            a(href="mailto:#{mailto}") #{mailto}
