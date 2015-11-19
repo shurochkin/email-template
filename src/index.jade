@@ -1,5 +1,5 @@
 - var logolink = 'http://auth.as'
-- var base = 'http://auth.dev.csod.ru/email-template'
+- var base = ''
 - var appstore = 'http://appstore.apple.com'
 - var googleplay = 'http://play.google.com'
 - var qrlink = 'https://auth.as/api/qr?hash=beefdead'
@@ -16,7 +16,7 @@ html
       .email-header
         .email-wrapper
           a.email-logo(href="#{logolink}")
-            img(src="#{base}/img/email-rcntec-logo.png")
+            img(src="#{base}img/email-rcntec-logo.png")
       .email-details
         .email-wrapper
           .email-from
@@ -39,10 +39,10 @@ html
           .email-app
             .email-app-item
               a(href="#{appstore}")
-                img(src="#{base}/img/appstore.png")
+                img(src="#{base}img/appstore.png")
             .email-app-item
               a(href="#{googleplay}")
-                img(src="#{base}/img/google-play.png")
+                img(src="#{base}img/google-play.png")
         
       .email-body
         .email-wrapper
@@ -68,7 +68,7 @@ html
                       - var ext = 'jpg'
                     default
                       - var ext = 'png'
-                  img(src="#{base}/img/step#{num}.#{ext}")
+                  img(src="#{base}img/step#{num}.#{ext}")
 
 
       .email-body
