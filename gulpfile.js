@@ -12,7 +12,7 @@ handleErrors = function(){
   // @emit "end"
 }
 
-gulp.task('default', ['jade', 'sass'], function(){
+gulp.task('default', ['jade', 'sass', 'img'], function(){
   gulp.watch('./src/sass/*.sass', ['sass']);
   gulp.watch('./src/*.jade', ['jade']);
 });
@@ -28,6 +28,11 @@ gulp.task('jade', function() {
   return gulp.src('./src/*.jade')
     .pipe( jade().on('error', handleErrors) )
     .pipe(gulp.dest('build/'));
+});
+
+gulp.task('img', function() {
+  return gulp.src('./src/img/**/*')
+    .pipe(gulp.dest('build/img/'));
 });
 
 gulp.task('inliner', function() {
